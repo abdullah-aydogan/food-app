@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
 import 'package:food_app/ui/cubit/home_page_cubit.dart';
+import 'package:food_app/ui/views/detail_page.dart';
 
 class HomePage extends StatefulWidget {
   
@@ -41,32 +42,45 @@ class _HomePageState extends State<HomePage> {
 
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 100,
-                              child: Image.network("$baseUrl/${food.img_name}")
-                            ),
-                            const SizedBox(width: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(food.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 10),
-                                Text("${food.price}.00 ₺", style: const TextStyle(fontSize: 18)),
-                              ],
-                            ),
-                            const Spacer(),
-                            IconButton(
-                              onPressed: () {
-
-                              },
-                              icon: const Icon(Icons.navigate_next_outlined),
-                            ),
-                          ],
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => DetailPage(food: food)
+                          )
+                        );
+                      },
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 100,
+                                child: Image.network("$baseUrl/${food.img_name}")
+                              ),
+                              const SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(food.name,
+                                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text("${food.price}.00 ₺", style: const TextStyle(fontSize: 18)),
+                                ],
+                              ),
+                              const Spacer(),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => DetailPage(food: food)
+                                    )
+                                  );
+                                },
+                                icon: const Icon(Icons.navigate_next_outlined),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
