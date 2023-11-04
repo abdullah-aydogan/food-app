@@ -50,6 +50,13 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                       child: Card(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                           child: Row(
