@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/ui/cubit/cart_page_cubit.dart';
+import 'package:food_app/ui/cubit/detail_page_cubit.dart';
 import 'package:food_app/ui/cubit/home_page_cubit.dart';
 import 'package:food_app/ui/views/home_page.dart';
 
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomePageCubit()),
+        BlocProvider(create: (context) => CartPageCubit()),
+        BlocProvider(create: (context) => DetailPageCubit()),
       ],
       child: MaterialApp(
         title: 'Aydoğan Yemek',

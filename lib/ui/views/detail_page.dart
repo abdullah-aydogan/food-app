@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
+import 'package:food_app/ui/cubit/detail_page_cubit.dart';
+import 'package:food_app/ui/views/cart_page.dart';
 
 class DetailPage extends StatefulWidget {
 
@@ -16,6 +19,7 @@ class _DetailPageState extends State<DetailPage> {
   String baseUrl = "http://kasimadalan.pe.hu/yemekler/resimler";
   int counter = 1;
   int totalPrice = 0;
+  String username = "abdullah_aydogan";
 
   @override
   void initState() {
@@ -104,7 +108,10 @@ class _DetailPageState extends State<DetailPage> {
                   )
               ),
               onPressed: () {
+                context.read<DetailPageCubit>().addToCart(widget.food.name, widget.food.img_name,
+                    totalPrice.toString(), counter.toString(), username);
 
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
               },
               label: const Text("Sepete Ekle", style: TextStyle(fontSize: 18)),
               icon: const Icon(Icons.shopping_cart_outlined),

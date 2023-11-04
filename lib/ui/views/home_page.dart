@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
 import 'package:food_app/ui/cubit/home_page_cubit.dart';
+import 'package:food_app/ui/views/cart_page.dart';
 import 'package:food_app/ui/views/detail_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,6 +30,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo")),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+            },
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
       ),
       body: BlocBuilder<HomePageCubit, List<Foods>>(
         builder: (context, foodsList) {
