@@ -33,6 +33,15 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Yemek Detayı", style: TextStyle(fontFamily: "Agbalumo")),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+
+            },
+            icon: const Icon(Icons.favorite_outline),
+          ),
+        ],
       ),
       body: Center(
         child: Column(

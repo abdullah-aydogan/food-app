@@ -30,4 +30,13 @@ class CartDaoRepository {
 
     print("Sepete Ekle: ${response.data.toString()}");
   }
+
+  Future<void> deleteCartItem(String id, String username) async {
+
+    var url = "http://kasimadalan.pe.hu/yemekler/sepettenYemekSil.php";
+    var data = {"sepet_yemek_id":id, "kullanici_adi":username};
+    var response = await Dio().post(url, data: FormData.fromMap(data));
+
+    print("Sepetten Yemek Sil : ${response.data.toString()}");
+  }
 }

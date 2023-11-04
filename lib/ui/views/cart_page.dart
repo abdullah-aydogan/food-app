@@ -28,6 +28,17 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sepetteki Yemekler", style: TextStyle(fontFamily: "Agbalumo")),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Ödeme ekranına geçiş yapılıyor...")),
+              );
+            },
+            icon: const Icon(Icons.shopping_cart_checkout_outlined),
+          ),
+        ],
       ),
       body: BlocBuilder<CartPageCubit, List<Cart>>(
         builder: (context, cartItems) {
@@ -72,7 +83,13 @@ class _CartPageState extends State<CartPage> {
                             const Spacer(),
                             IconButton(
                               onPressed: () {
+                                context.read<CartPageCubit>().deleteCartItem(cartItem.id, username);
 
+                                if(cartItems.length == 1) {
+                                  context.read<CartPageCubit>().deleteCartItem(cartItem.id, username);
+                                  cartItems.clear();
+                                  Navigator.of(context).popUntil((route) => route.isFirst);
+                                }
                               },
                               icon: const Icon(Icons.delete_outline),
                             ),
@@ -87,7 +104,11 @@ class _CartPageState extends State<CartPage> {
           }
 
           else {
-            return const Center();
+            return const Center(
+              child: Text("Sepetiniz boş, sepetinize yemek ekleyin.",
+                style: TextStyle(fontSize: 18), textAlign: TextAlign.center,
+              ),
+            );
           }
         },
       ),

@@ -13,4 +13,10 @@ class CartPageCubit extends Cubit<List<Cart>> {
     var cartItems = await repo.listCartItems(username);
     emit(cartItems);
   }
+
+  Future<void> deleteCartItem(String id, String username) async {
+
+    await repo.deleteCartItem(id, username);
+    await listCardItems(username);
+  }
 }

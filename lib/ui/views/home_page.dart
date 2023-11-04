@@ -15,6 +15,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  int selectedIndex = 0;
+  var pages = [const CartPage()];
+
   @override
   void initState() {
 
@@ -30,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo")),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -110,6 +114,38 @@ class _HomePageState extends State<HomePage> {
             return const Center();
           }
         },
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo", fontSize: 26),
+                    textAlign: TextAlign.center
+                  ),
+                  Icon(Icons.fastfood_outlined),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.favorite_outline),
+              title: const Text("Favoriler"),
+              onTap: () {
+
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person_outline),
+              title: const Text("Profil Sayfası"),
+              onTap: () {
+
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
