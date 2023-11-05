@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/cart.dart';
+import 'package:food_app/ui/colors.dart';
 import 'package:food_app/ui/cubit/cart_page_cubit.dart';
 
 class CartPage extends StatefulWidget {
@@ -27,6 +28,8 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
         title: const Text("Sepetteki Yemekler", style: TextStyle(fontFamily: "Agbalumo")),
         centerTitle: true,
         actions: [
@@ -91,7 +94,7 @@ class _CartPageState extends State<CartPage> {
                                   Navigator.of(context).popUntil((route) => route.isFirst);
                                 }
                               },
-                              icon: const Icon(Icons.delete_outline),
+                              icon: Icon(Icons.delete_outline, color: secondaryColor),
                             ),
                           ],
                         ),

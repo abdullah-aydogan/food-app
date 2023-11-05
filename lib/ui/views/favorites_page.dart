@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/favorites.dart';
+import 'package:food_app/ui/colors.dart';
 import 'package:food_app/ui/cubit/favorites_page_cubit.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -26,6 +27,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
         title: const Text("Favoriler", style: TextStyle(fontFamily: "Agbalumo")),
         centerTitle: true,
       ),
@@ -66,7 +69,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                               onPressed: () {
                                 context.read<FavoritesPageCubit>().removeToFavorites(item.id);
                               },
-                              icon: const Icon(Icons.cancel_outlined),
+                              icon: Icon(Icons.cancel_outlined, color: secondaryColor),
                             ),
                           ],
                         ),
@@ -81,7 +84,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
           else {
             return const Center(
               child: Text("Favori listeniz boş.",
-                style: TextStyle(fontSize: 18), textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20), textAlign: TextAlign.center,
               ),
             );
           }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
+import 'package:food_app/ui/colors.dart';
 import 'package:food_app/ui/cubit/home_page_cubit.dart';
 import 'package:food_app/ui/views/cart_page.dart';
 import 'package:food_app/ui/views/detail_page.dart';
@@ -34,6 +35,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
         title: const Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo")),
         centerTitle: true,
         actions: [
@@ -121,26 +124,29 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              child: Column(
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: primaryColor
+              ),
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo", fontSize: 26),
+                  Text("Aydoğan Yemek", style: TextStyle(fontFamily: "Agbalumo", fontSize: 26, color: Colors.white),
                     textAlign: TextAlign.center
                   ),
-                  Icon(Icons.fastfood_outlined),
+                  Icon(Icons.fastfood_outlined, color: Colors.white),
                 ],
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.favorite_outline),
+              leading: Icon(Icons.favorite_outline, color: secondaryColor),
               title: const Text("Favoriler"),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const FavoritesPage()));
               },
             ),
             ListTile(
-              leading: const Icon(Icons.person_outline),
+              leading: Icon(Icons.person_outline, color: primaryColor),
               title: const Text("Profil Sayfası"),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));

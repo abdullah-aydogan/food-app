@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/ui/colors.dart';
 
 class ProfilePage extends StatefulWidget {
 
@@ -13,6 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
         title: const Text("Profil Sayfası", style: TextStyle(fontFamily: "Agbalumo")),
         centerTitle: true,
       ),
@@ -29,9 +32,8 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 20),
             TextButton.icon(
               style: TextButton.styleFrom(
-                  side: const BorderSide(
-                    width: 1.0,
-                  )
+                  backgroundColor: secondaryColor,
+                  foregroundColor: Colors.white,
               ),
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(

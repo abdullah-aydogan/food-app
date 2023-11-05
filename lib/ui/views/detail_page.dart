@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
+import 'package:food_app/ui/colors.dart';
 import 'package:food_app/ui/cubit/detail_page_cubit.dart';
 import 'package:food_app/ui/views/cart_page.dart';
 import 'package:food_app/ui/views/favorites_page.dart';
@@ -33,6 +34,8 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
         title: const Text("Yemek Detayı", style: TextStyle(fontFamily: "Agbalumo")),
         centerTitle: true,
         actions: [
@@ -49,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+              padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
               child: SizedBox(
                 width: 180,
                 child: Container(
@@ -73,9 +76,8 @@ class _DetailPageState extends State<DetailPage> {
               children: [
                 TextButton(
                   style: TextButton.styleFrom(
-                    side: const BorderSide(
-                      width: 1.0,
-                    )
+                    backgroundColor: secondaryColor,
+                    foregroundColor: Colors.white,
                   ),
                   onPressed: () {
                     setState(() {
@@ -97,9 +99,8 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      side: const BorderSide(
-                        width: 1.0,
-                      )
+                      backgroundColor: secondaryColor,
+                      foregroundColor: Colors.white,
                   ),
                   onPressed: () {
                     setState(() {
@@ -114,7 +115,10 @@ class _DetailPageState extends State<DetailPage> {
             const Spacer(),
             TextButton.icon(
               style: TextButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
                   side: const BorderSide(
+                    color: Colors.green,
                     width: 1.0,
                   )
               ),
