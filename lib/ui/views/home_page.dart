@@ -4,6 +4,8 @@ import 'package:food_app/data/entity/foods.dart';
 import 'package:food_app/ui/cubit/home_page_cubit.dart';
 import 'package:food_app/ui/views/cart_page.dart';
 import 'package:food_app/ui/views/detail_page.dart';
+import 'package:food_app/ui/views/favorites_page.dart';
+import 'package:food_app/ui/views/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   
@@ -134,14 +136,14 @@ class _HomePageState extends State<HomePage> {
               leading: const Icon(Icons.favorite_outline),
               title: const Text("Favoriler"),
               onTap: () {
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const FavoritesPage()));
               },
             ),
             ListTile(
               leading: const Icon(Icons.person_outline),
               title: const Text("Profil Sayfası"),
               onTap: () {
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
               },
             ),
           ],

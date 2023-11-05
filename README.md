@@ -1,6 +1,6 @@
 # Yemek Sipariş Uygulaması
 
-Udemy'deki Flutter Bootcamp eğitiminde bitirme projesi (Yemek Sipariş Uygulaması)
+Udemy'deki Flutter Bootcamp eğitiminde verilen bitirme projesi (Yemek Sipariş Uygulaması)
 
 ## Uygulama Hakkında Bilgiler
 

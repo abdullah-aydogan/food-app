@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/data/entity/foods.dart';
 import 'package:food_app/ui/cubit/detail_page_cubit.dart';
 import 'package:food_app/ui/views/cart_page.dart';
+import 'package:food_app/ui/views/favorites_page.dart';
 
 class DetailPage extends StatefulWidget {
 
@@ -37,7 +38,8 @@ class _DetailPageState extends State<DetailPage> {
         actions: [
           IconButton(
             onPressed: () {
-
+              context.read<DetailPageCubit>().addToFavorites(widget.food.name, widget.food.img_name, 1);
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const FavoritesPage()));
             },
             icon: const Icon(Icons.favorite_outline),
           ),
@@ -120,7 +122,7 @@ class _DetailPageState extends State<DetailPage> {
                 context.read<DetailPageCubit>().addToCart(widget.food.name, widget.food.img_name,
                     totalPrice.toString(), counter.toString(), username);
 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const CartPage()));
               },
               label: const Text("Sepete Ekle", style: TextStyle(fontSize: 18)),
               icon: const Icon(Icons.shopping_cart_outlined),
